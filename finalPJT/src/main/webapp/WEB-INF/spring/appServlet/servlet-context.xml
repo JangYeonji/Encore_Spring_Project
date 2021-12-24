@@ -23,6 +23,22 @@
 	
 	<context:component-scan base-package="kr.co.project" />
 	
+	<beans:bean id="test" class="kr.co.project.interceptor.TestInterceptor"/>
+	<beans:bean id="login" class="kr.co.project.interceptor.LoginInterceptor"/>
+	<beans:bean id="logout" class="kr.co.project.interceptor.LogoutInterceptor"/>
 	
-	
+	<interceptors>
+		<interceptor>
+			<mapping path="/pre.do"/>
+			<beans:ref bean="test"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/login"/>
+			<beans:ref bean="login"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/logout"/>
+			<beans:ref bean="logout"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>

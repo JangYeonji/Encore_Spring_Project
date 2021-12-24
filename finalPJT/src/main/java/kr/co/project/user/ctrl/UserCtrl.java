@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,21 +23,22 @@ public class UserCtrl {
 	}
 	
 	@RequestMapping(value="login", method=RequestMethod.POST)
-	public String login(UserVO user, HttpSession session) {
+	public void login(UserVO user, HttpSession session, Model model) {
 		System.out.println(">>> user ctrl login");
 		System.out.println(">>> param : " + user.getId() + "\t" + user.getPwd());
 		
 		Object obj = service.loginService(user);
-		session.setAttribute("loginUser", obj);
-		return "home";
+		//session.setAttribute("loginUser", obj);
+		model.addAttribute("loginUser",obj);
+		//return "home";
 	}
 	
 	@RequestMapping(value="logout", method=RequestMethod.GET)
-	public String logout(UserVO user, HttpSession session) {
+	public void logout(UserVO user, HttpSession session) {
 		System.out.println(">>> user ctrl logout");
 		
-		session.invalidate();
-		return "home";
+//		session.invalidate();
+//		return "home";
 	}
 	
 	@RequestMapping(value="joinForm", method=RequestMethod.GET)
