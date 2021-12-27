@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.co.project.service.UserService;
 import kr.co.project.user.model.vo.UserVO;
+import kr.co.project.user.service.UserService;
 
 @Controller
 public class UserCtrl {

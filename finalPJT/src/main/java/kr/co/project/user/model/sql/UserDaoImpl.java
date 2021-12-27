@@ -1,12 +1,8 @@
 package kr.co.project.user.model.sql;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import kr.co.project.user.model.vo.UserVO;
 
 @Repository("userD")
 public class UserDaoImpl implements UserDao{

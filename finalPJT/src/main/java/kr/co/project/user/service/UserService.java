@@ -1,4 +1,4 @@
-package kr.co.project.service;
+package kr.co.project.user.service;
 
 import kr.co.project.user.model.vo.UserVO;
 
