@@ -21,5 +21,21 @@
 		SET VIEWCNT = VIEWCNT+1
 		WHERE SEQ=#{seq}
 	</update>
+	
+	<insert id="registerRow" parameterType="bbs_vo" flushCache="true">
+		INSERT INTO BBS_TBL
+		VALUES (bbs_seq.nextval, #{subject}, #{content}, #{writer}, sysdate, 0)
+	</insert>
+	
+	<delete id="removeRow" parameterType="bbs_vo" flushCache="true">
+		DELETE FROM BBS_TBL
+		WHERE SEQ=#{seq}
+	</delete>
+	
+	<update id="updateRow" parameterType="bbs_vo" flushCache="true">
+		UPDATE BBS_TBL
+		SET SUBJECT=#{subject}, CONTENT=#{content}
+		WHERE SEQ=#{seq}
+	</update>
 </mapper>  
 

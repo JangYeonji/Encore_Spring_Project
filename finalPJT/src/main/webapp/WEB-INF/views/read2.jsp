@@ -34,7 +34,7 @@
 		<div class="form-group">
 			<label for="exampleInputEmail1">Writer</label> <input type="text"
 				name="writer" class="form-control" value="${bbs.writer }"
-				readonly="readonly">
+				readonly="readonly">			
 		</div>
 	</div>
 </form>
@@ -42,14 +42,28 @@
 <!-- /.box-body -->
 
 <div class="box-footer">
-	<button type="submit" class="btn btn-warning">Modify</button>
-	<button type="submit" class="btn btn-danger">REMOVE</button>
-	<button type="submit" class="btn btn-primary">LIST ALL</button>
+	<button type="submit" class="btn btn-warning mine" id="modify">Modify</button>
+	<button type="submit" class="btn btn-danger mine" id="remove">REMOVE</button>
+	<button type="submit" class="btn btn-primary" id="listall">LIST ALL</button>
 </div>
 
 
 <script>
 	$(document).ready(function(){
+		$("#modify").click(function(){
+			location.href="bbs_modifyForm?seq=" + ${bbs.seq};
+		});
+		$("#remove").click(function(){
+			location.href="bbs_remove?seq=" + ${bbs.seq};
+		});
+		$("#listall").click(function(){
+			location.href="bbs_list";
+		});
+		
+		if(${bbs.writer!= loginUser.name}){
+			$("#remove").hide();
+			$("#modify").hide();
+		}
 	});
 </script>
 

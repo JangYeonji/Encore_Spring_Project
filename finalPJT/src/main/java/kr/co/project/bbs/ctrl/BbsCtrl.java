@@ -42,4 +42,36 @@ public class BbsCtrl {
 		
 		return "register";
 	}
+	
+	@RequestMapping(value="bbs_remove", method=RequestMethod.GET)
+	public String remove(BbsVO bbs) {
+		System.out.println(">>> bbs ctrl remove");
+		int flag = service.removeService(bbs);
+		
+		return "redirect:/bbs_list";
+	}
+	@RequestMapping(value="bbs_register", method=RequestMethod.POST)
+	public String register(BbsVO bbs) {
+		System.out.println(">>> bbs ctrl register");
+		int flag = service.registerService(bbs);
+		
+		return "redirect:/bbs_list";
+	}
+	
+	@RequestMapping(value="bbs_modifyForm", method=RequestMethod.GET)
+	public String modifyForm(BbsVO bbs, Model model) {
+		System.out.println(">>> bbs ctrl modifyForm");
+		Object obj = service.readService(bbs);
+		model.addAttribute("bbs", obj);
+		return "modify";
+	}
+	
+	@RequestMapping(value="bbs_modify", method=RequestMethod.POST)
+	public String modify(BbsVO bbs) {
+		System.out.println(">>> bbs ctrl modify");
+		int flag = service.updateService(bbs);
+		
+		//return "redirect:/bbs_list";
+		return "redirect:/bbs_read?seq="+bbs.getSeq();
+	}
 }

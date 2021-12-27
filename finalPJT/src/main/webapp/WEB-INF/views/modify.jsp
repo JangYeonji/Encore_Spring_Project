@@ -11,21 +11,23 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">REGISTER BOARD</h3>
+					<h3 class="box-title">MODIFY BOARD</h3>
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post" action="bbs_register">
+<form role="form" method="post" action="bbs_modify">
+	<input type='hidden' name='seq' value="${bbs.seq }">
 	<div class="box-body">
 		<div class="form-group">
 			<label for="exampleInputEmail1">Subject</label> 
 			<input type="text"
-				name='subject' class="form-control" placeholder="Enter Subject">
+				name='subject' class="form-control" placeholder="Enter Subject" value="${bbs.subject }">
+				
 		</div>
 		<div class="form-group">
 			<label for="exampleInputPassword1">Content</label>
 			<textarea class="form-control" name="content" rows="3"
-				placeholder="Enter ..."></textarea>
+				placeholder="Enter ...">${bbs.content }</textarea>
 		</div>
 		<div class="form-group">
 			<label for="exampleInputEmail1">Writer</label> 

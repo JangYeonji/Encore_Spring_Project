@@ -29,4 +29,22 @@ public class BbsDaoImpl implements BbsDao{
 		session.update("encore.project.bbs.upCntRow", obj);
 	}
 
+	@Override
+	public int registerRow(Object obj) {
+		System.out.println(">>> dao registerRow");
+		return session.insert("encore.project.bbs.registerRow", obj);
+	}
+
+	@Override
+	public int removeRow(Object obj) {
+		System.out.println(">>> dao removeRow");
+		return session.delete("encore.project.bbs.removeRow", obj);
+	}
+
+	@Override
+	public int updateRow(Object obj) {
+		System.out.println(">>> dao updateRow");
+		return session.update("encore.project.bbs.updateRow", obj);
+	}
+
 }

@@ -20,7 +20,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		if(user != null) {
 			System.out.println(">>> interceptor session save");
 			session.setAttribute("loginUser", user);
-			response.sendRedirect("/");
+			//response.sendRedirect("/");
+			Object dest = session.getAttribute("dest");
+			response.sendRedirect(dest != null ? (String)dest : "/");
 		}
 	}
 
