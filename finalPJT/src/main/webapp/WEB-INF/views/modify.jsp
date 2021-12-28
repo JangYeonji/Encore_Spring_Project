@@ -15,33 +15,47 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post" action="bbs_modify">
-	<input type='hidden' name='seq' value="${bbs.seq }">
+<form role="form" method="post">
 	<div class="box-body">
+		<div class="form-group">
+			<label for="exampleInputEmail1">BNO</label> <input type="text"
+				name='seq' class="form-control" value="${bbs.seq }"
+				readonly="readonly" id="seq">
+		</div>
 		<div class="form-group">
 			<label for="exampleInputEmail1">Subject</label> 
 			<input type="text"
-				name='subject' class="form-control" placeholder="Enter Subject" value="${bbs.subject }">
+				name='subject' class="form-control" value="${bbs.subject }" id="subject">
 				
 		</div>
 		<div class="form-group">
 			<label for="exampleInputPassword1">Content</label>
-			<textarea class="form-control" name="content" rows="3"
-				placeholder="Enter ...">${bbs.content }</textarea>
+			<textarea class="form-control" name="content" rows="3" id="content"
+				>${bbs.content }</textarea>
 		</div>
 		<div class="form-group">
 			<label for="exampleInputEmail1">Writer</label> 
 			<input type="text"
-				name="writer" class="form-control" readonly value="${loginUser.name }">
+				name="writer" class="form-control" readonly value="${loginUser.name }" id="writer">
 		</div>
 	</div>
 	<!-- /.box-body -->
-
-	<div class="box-footer">
-		<button type="submit" class="btn btn-primary">Submit</button>
-	</div>
 </form>
+<div class="box-footer">
+	<button type="submit" class="btn btn-primary" id="updateBtn">UPDATE</button>
+	<button type="submit" class="btn btn-warning" id="cancelBtn">CANCEL</button>
+</div>
 
+<script>
+	$(document).ready(function() {
+		$("#updateBtn").click(function(){
+			location.href="bbs_modify?seq=" + $("#seq").val() + "&subject=" + $("#subject").val() + "&content="+$("#content").val();
+		});
+		$("#cancelBtn").click(function(){
+			location.href="bbs_read?seq=" + $("#seq").val();
+		});
+	});
+</script>
 
 			</div>
 			<!-- /.box -->

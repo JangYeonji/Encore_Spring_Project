@@ -69,11 +69,11 @@ public class BbsCtrl {
 		return "modify";
 	}
 	
-	@RequestMapping(value="bbs_modify", method=RequestMethod.POST)
+	@RequestMapping(value="bbs_modify", method=RequestMethod.GET)
 	public String modify(BbsVO bbs) {
 		System.out.println(">>> bbs ctrl modify");
 		int flag = service.updateService(bbs);
-		
+		System.out.println(bbs);
 		//return "redirect:/bbs_list";
 		return "redirect:/bbs_read?seq="+bbs.getSeq();
 	}

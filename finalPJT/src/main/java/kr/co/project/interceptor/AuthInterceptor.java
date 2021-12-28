@@ -26,7 +26,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 			if(request.getMethod().equals("get")) {
 				request.getSession().setAttribute("dest", uri+query);
 			}else {
-				request.getSession().setAttribute("dest", uri);
+				request.getSession().setAttribute("dest", uri+query);
 			}
 			response.sendRedirect("sign-in");
 			return false;   //controller ¾ÈÅÂ¿ò

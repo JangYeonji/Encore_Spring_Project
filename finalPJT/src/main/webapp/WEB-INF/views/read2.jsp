@@ -17,7 +17,7 @@
 
 <form role="form" method="post" action="ooo">
 
-	<input type='hidden' name='seq' value="${bbs.seq }">
+	<input type='hidden' name='seq' id='seq' value="${bbs.seq }">
 
 
 	<div class="box-body">
@@ -42,27 +42,27 @@
 <!-- /.box-body -->
 
 <div class="box-footer">
-	<button type="submit" class="btn btn-warning mine" id="modify">Modify</button>
-	<button type="submit" class="btn btn-danger mine" id="remove">REMOVE</button>
-	<button type="submit" class="btn btn-primary" id="listall">LIST ALL</button>
+	<button type="button" class="btn btn-warning mine" id="modifyBtn">Modify</button>
+	<button type="button" class="btn btn-danger mine" id="removeBtn">REMOVE</button>
+	<button type="button" class="btn btn-primary" id="listallBtn">LIST ALL</button>
 </div>
 
 
 <script>
 	$(document).ready(function(){
-		$("#modify").click(function(){
-			location.href="bbs_modifyForm?seq=" + ${bbs.seq};
+		$("#modifyBtn").click(function(){
+			location.href="bbs_modifyForm?seq=" +$("#seq").val();
 		});
-		$("#remove").click(function(){
-			location.href="bbs_remove?seq=" + ${bbs.seq};
+		$("#removeBtn").click(function(){
+			location.href="bbs_remove?seq=" +$("#seq").val();
 		});
-		$("#listall").click(function(){
+		$("#listallBtn").click(function(){
 			location.href="bbs_list";
 		});
 		
 		if(${bbs.writer!= loginUser.name}){
-			$("#remove").hide();
-			$("#modify").hide();
+			$("#removeBtn").hide();
+			$("#modifyBtn").hide();
 		}
 	});
 </script>

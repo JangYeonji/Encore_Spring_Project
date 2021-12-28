@@ -43,6 +43,7 @@
 		</interceptor>
 		<interceptor>
 			<mapping path="/bbs_registerForm"/>
+			<mapping path="/bbs_read"/>
 			<beans:ref bean="auth"/>
 		</interceptor>
 		

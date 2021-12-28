@@ -87,7 +87,6 @@
 				data : {searchCondition:$("#searchCondition").val(), searchKeyword:$("#searchKeyword").val()},
 				dataType : "json",
 				success : function(data){
-					alert(data);
 					$("#tbody").empty();
 					trs = ""
 					$.each(data, function(idx, obj){
