@@ -47,4 +47,10 @@ public class BbsDaoImpl implements BbsDao{
 		return session.update("encore.project.bbs.updateRow", obj);
 	}
 
+	@Override
+	public List<Object> searchRow(Object obj) {
+		System.out.println(">>> dao searchRow");
+		return session.selectList("encore.project.bbs.searchRow", obj);
+	}
+
 }

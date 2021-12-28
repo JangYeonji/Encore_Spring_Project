@@ -3,6 +3,7 @@ package kr.co.project.bbs.service;
 import java.util.List;
 
 import kr.co.project.bbs.model.vo.BbsVO;
+import kr.co.project.bbs.model.vo.FilterVO;
 
 public interface BbsService {
 
@@ -12,5 +13,6 @@ public interface BbsService {
 	public int registerService(Object obj);
 	public int removeService(Object obj);
 	public int updateService(Object obj);
+	public List<Object> searchService(Object obj);
 
 }

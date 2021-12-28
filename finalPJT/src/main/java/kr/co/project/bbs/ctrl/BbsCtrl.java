@@ -1,5 +1,6 @@
 package kr.co.project.bbs.ctrl;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.project.bbs.model.vo.BbsVO;
+import kr.co.project.bbs.model.vo.FilterVO;
 import kr.co.project.bbs.service.BbsService;
 
 @Controller
@@ -73,5 +76,15 @@ public class BbsCtrl {
 		
 		//return "redirect:/bbs_list";
 		return "redirect:/bbs_read?seq="+bbs.getSeq();
+	}
+	
+	@RequestMapping(value="bbs_search", method=RequestMethod.POST)
+	@ResponseBody   //Ajax 통신 어노테이션
+	public List<Object> search(FilterVO search) {
+		System.out.println(">>> bbs ctrl search");
+		System.out.println(">>> param : " + search.getSearchCondition() + ", " + search.getSearchKeyword());
+		List<Object> list = service.searchService(search);
+		
+		return list;
 	}
 }
