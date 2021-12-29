@@ -60,14 +60,9 @@ public class BbsDaoImpl implements BbsDao{
 	}
 
 	@Override
-	public int addReplyRow(Object obj) {
-		System.out.println(">>> dao replyListRow");
-		return session.insert("encore.project.bbs.addReplyRow", obj);
-	}
-
-	@Override
 	public List<Object> readReplyRow(Object obj) {
 		System.out.println(">>> dao readReplyRow");
+		int flag = session.insert("encore.project.bbs.addReplyRow", obj);
 		return session.selectList("encore.project.bbs.readReplyRow", obj);
 	}
 

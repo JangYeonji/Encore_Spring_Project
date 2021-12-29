@@ -93,7 +93,6 @@ public class BbsCtrl {
 	public List<Object> addReply(ReplyVO reply) {
 		System.out.println(">>> bbs ctrl addReply");
 		
-		int flag = service.addReplyService(reply);
 		List<Object> list2 = service.readReplyService(reply);
 
 		return list2;

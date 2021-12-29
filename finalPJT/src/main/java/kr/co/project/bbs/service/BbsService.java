@@ -15,7 +15,6 @@ public interface BbsService {
 	public int removeService(Object obj);
 	public int updateService(Object obj);
 	public List<Object> searchService(Object obj);
-	public int addReplyService(Object obj);
 	public List<Object> readReplyService(Object obj);
 	public int removeReplyService(Object obj);
 

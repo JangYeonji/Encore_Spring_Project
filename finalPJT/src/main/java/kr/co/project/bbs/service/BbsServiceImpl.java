@@ -57,12 +57,6 @@ public class BbsServiceImpl implements BbsService{
 	}
 
 	@Override
-	public int addReplyService(Object obj) {
-		System.out.println(">>> bbs service replyList");
-		return dao.addReplyRow(obj);
-	}
-
-	@Override
 	public List<Object> readReplyService(Object obj) {
 		System.out.println(">>> bbs service readReply");
 		return dao.readReplyRow(obj);
