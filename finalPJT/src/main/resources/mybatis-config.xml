@@ -7,6 +7,7 @@
 		<typeAlias type="kr.co.project.user.model.vo.UserVO" alias="user_vo"/>
 		<typeAlias type="kr.co.project.bbs.model.vo.BbsVO" alias="bbs_vo"/>
 		<typeAlias type="kr.co.project.bbs.model.vo.FilterVO" alias="filter_vo"/>
+		<typeAlias type="kr.co.project.bbs.model.vo.ReplyVO" alias="reply_vo"/>
 	</typeAliases>
 </configuration>
 

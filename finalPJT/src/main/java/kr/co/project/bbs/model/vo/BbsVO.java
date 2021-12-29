@@ -1,9 +1,13 @@
 package kr.co.project.bbs.model.vo;
 
+import java.util.List;
+
 public class BbsVO {
 	private int seq;
 	private String subject,content, writer, regdate;
 	private int viewcnt;
+	
+	private List<ReplyVO> rlist;
 	public BbsVO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -57,6 +61,12 @@ public class BbsVO {
 	public String toString() {
 		return "BbsVO [seq=" + seq + ", subject=" + subject + ", content=" + content + ", writer=" + writer
 				+ ", regdate=" + regdate + ", viewcnt=" + viewcnt + "]";
+	}
+	public List<ReplyVO> getRlist() {
+		return rlist;
+	}
+	public void setRlist(List<ReplyVO> rlist) {
+		this.rlist = rlist;
 	}
 	
 	

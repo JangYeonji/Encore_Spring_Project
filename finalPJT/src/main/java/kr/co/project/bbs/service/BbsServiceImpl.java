@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.co.project.bbs.model.sql.BbsDao;
+import kr.co.project.bbs.model.vo.ReplyVO;
 
 @Service("bbsS")
 public class BbsServiceImpl implements BbsService{
@@ -53,6 +54,24 @@ public class BbsServiceImpl implements BbsService{
 	public List<Object> searchService(Object obj) {
 		System.out.println(">>> bbs service search");
 		return dao.searchRow(obj);
+	}
+
+	@Override
+	public int addReplyService(Object obj) {
+		System.out.println(">>> bbs service replyList");
+		return dao.addReplyRow(obj);
+	}
+
+	@Override
+	public List<Object> readReplyService(Object obj) {
+		System.out.println(">>> bbs service readReply");
+		return dao.readReplyRow(obj);
+	}
+
+	@Override
+	public int removeReplyService(Object obj) {
+		System.out.println(">>> bbs service removeReply");
+		return dao.removeReplyRow(obj);
 	}
 
 }

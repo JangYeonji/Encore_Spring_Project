@@ -6,6 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.project.bbs.model.vo.BbsVO;
+import kr.co.project.bbs.model.vo.ReplyVO;
+
 @Repository("bbsD")
 public class BbsDaoImpl implements BbsDao{
 	@Autowired
@@ -20,7 +23,10 @@ public class BbsDaoImpl implements BbsDao{
 	@Override
 	public Object readRow(Object obj) {
 		System.out.println(">>> dao readRow");
-		return session.selectOne("encore.project.bbs.readRow", obj);
+		BbsVO bbs = session.selectOne("encore.project.bbs.readRow", obj);
+		List<ReplyVO> rlist = session.selectList("encore.project.bbs.replyRow", obj);
+		bbs.setRlist(rlist);
+		return bbs;
 	}
 
 	@Override
@@ -51,6 +57,24 @@ public class BbsDaoImpl implements BbsDao{
 	public List<Object> searchRow(Object obj) {
 		System.out.println(">>> dao searchRow");
 		return session.selectList("encore.project.bbs.searchRow", obj);
+	}
+
+	@Override
+	public int addReplyRow(Object obj) {
+		System.out.println(">>> dao replyListRow");
+		return session.insert("encore.project.bbs.addReplyRow", obj);
+	}
+
+	@Override
+	public List<Object> readReplyRow(Object obj) {
+		System.out.println(">>> dao readReplyRow");
+		return session.selectList("encore.project.bbs.readReplyRow", obj);
+	}
+
+	@Override
+	public int removeReplyRow(Object obj) {
+		System.out.println(">>> dao removeReplyRow");
+		return session.delete("encore.project.bbs.removeReplyRow", obj);
 	}
 
 }

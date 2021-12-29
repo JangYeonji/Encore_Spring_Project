@@ -1,6 +1,5 @@
 package kr.co.project.bbs.ctrl;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.project.bbs.model.vo.BbsVO;
 import kr.co.project.bbs.model.vo.FilterVO;
+import kr.co.project.bbs.model.vo.ReplyVO;
 import kr.co.project.bbs.service.BbsService;
 
 @Controller
@@ -87,4 +87,26 @@ public class BbsCtrl {
 		
 		return list;
 	}
+	
+	@RequestMapping(value="bbs_addReply", method=RequestMethod.POST)
+	@ResponseBody
+	public List<Object> addReply(ReplyVO reply) {
+		System.out.println(">>> bbs ctrl addReply");
+		
+		int flag = service.addReplyService(reply);
+		List<Object> list2 = service.readReplyService(reply);
+
+		return list2;
+	}
+	
+	@RequestMapping(value="bbs_removeReply", method=RequestMethod.GET)
+	public String removeReply(ReplyVO reply) {
+		System.out.println(">>> bbs ctrl removeReply");
+
+		int flag = service.removeReplyService(reply);
+		
+		return "redirect:/bbs_read?seq=" + reply.getSeq();
+	}
+	
+	
 }
