@@ -14,6 +14,6 @@ public interface BbsDao {
 	public int updateRow(Object obj);
 	public List<Object> searchRow(Object obj);
 	public List<Object> readReplyRow(Object obj);
-	public int removeReplyRow(Object obj);
+	public List<Object> removeReplyRow(Object obj);
 
 }

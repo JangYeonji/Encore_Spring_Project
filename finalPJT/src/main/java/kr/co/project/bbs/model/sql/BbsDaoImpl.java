@@ -67,9 +67,10 @@ public class BbsDaoImpl implements BbsDao{
 	}
 
 	@Override
-	public int removeReplyRow(Object obj) {
+	public List<Object> removeReplyRow(Object obj) {
 		System.out.println(">>> dao removeReplyRow");
-		return session.delete("encore.project.bbs.removeReplyRow", obj);
+		int flag = session.delete("encore.project.bbs.removeReplyRow", obj);
+		return session.selectList("encore.project.bbs.readReplyRow", obj);
 	}
 
 }

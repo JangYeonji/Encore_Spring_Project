@@ -80,7 +80,7 @@
 					
 					<li class="time-label">${reply.rcontent }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<c:if test="${reply.rwriter == loginUser.name}">
-							<a href="bbs_removeReply?rseq=${reply.rseq }&seq=${reply.seq}">X</a>
+							<a href="javascript:removeReply(${reply.rseq },${reply.seq })">X</a>
 						</c:if>
 					</li>
 				</c:forEach>
@@ -98,6 +98,26 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+	function removeReply(rseq,seq){
+		$.ajax({
+			url : "bbs_removeReply",
+			type : "post",
+			data : {rseq:rseq, seq:seq},
+			dataType : "json",
+			success : function(data){
+				$("#rlist").empty();
+				rl = ""
+				$.each(data, function(idx, reply){
+					rl += "<li class='time-label'>" + reply.rcontent + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+					if (reply.rwriter == "${loginUser.name}"){
+						rl += "<a href='javascript:removeReply("+reply.rseq, reply.seq+")'>X</a>"
+					}
+					rl += "</li>"
+				})
+				$("#rlist").html(rl);
+			}
+		});
+	}
 	$(document).ready(function(){
 		$("#modifyBtn").click(function(){
 			location.href="bbs_modifyForm?seq=" +$("#seq").val();
@@ -129,8 +149,8 @@
 					rl = ""
 					$.each(data, function(idx, reply){
 						rl += "<li class='time-label'>" + reply.rcontent + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-						if (reply.rwriter == loginUser){
-							rl += "<a href='bbs_removeReply?rseq=" + reply.rseq + "&seq=" + reply.seq + "'>X</a>"
+						if (reply.rwriter == "${loginUser.name}"){
+							rl += "<a href='javascript:removeReply("+reply.rseq,reply.seq+")'>X</a>"
 						}
 						rl += "</li>"
 					})

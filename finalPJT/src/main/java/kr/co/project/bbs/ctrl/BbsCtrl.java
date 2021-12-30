@@ -98,13 +98,14 @@ public class BbsCtrl {
 		return list2;
 	}
 	
-	@RequestMapping(value="bbs_removeReply", method=RequestMethod.GET)
-	public String removeReply(ReplyVO reply) {
+	@RequestMapping(value="bbs_removeReply", method=RequestMethod.POST)
+	@ResponseBody
+	public List<Object> removeReply(ReplyVO reply) {
 		System.out.println(">>> bbs ctrl removeReply");
 
-		int flag = service.removeReplyService(reply);
+		List<Object> list3 = service.removeReplyService(reply);
 		
-		return "redirect:/bbs_read?seq=" + reply.getSeq();
+		return list3;
 	}
 	
 	

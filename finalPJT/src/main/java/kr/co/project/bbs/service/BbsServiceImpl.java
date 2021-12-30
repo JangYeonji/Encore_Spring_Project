@@ -63,7 +63,7 @@ public class BbsServiceImpl implements BbsService{
 	}
 
 	@Override
-	public int removeReplyService(Object obj) {
+	public List<Object> removeReplyService(Object obj) {
 		System.out.println(">>> bbs service removeReply");
 		return dao.removeReplyRow(obj);
 	}
