@@ -9,6 +9,16 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
+	<!-- @Repository("testD") -->
+	<!-- <bean id="testD" class="kr.co.encore.model.sql.TestDaoImpl"/> -->
+	
+	<!-- @Service("testS") -->
+	<!--  
+	<bean id="testS" class="kr.co.encore.service.TestServiceImpl">
+		<constructor-arg ref="testD" />
+	</bean>
+	-->
+	
 	<!-- 1. DataSource 설정추가하고 JUnit 연결 테스트하기 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
